@@ -1,5 +1,6 @@
 # Info GTK CLI
 
+[![Tests](https://github.com/dapodix/info-gtk/workflows/Tests/badge.svg)](https://github.com/dapodix/info-gtk/actions?query=workflow%3ATests)
 Merupakan alat bantu atau scraper website [info-gtk](https://info.gtk.kemdikbud.go.id/).
 
 ## Fitur yang akan datang
