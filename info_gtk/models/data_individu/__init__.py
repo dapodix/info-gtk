@@ -1,3 +1,5 @@
+from __future__ import annotations
+from bs4 import Tag
 from dataclasses import dataclass
 from .ijazah_terakhir import IjazahTerakhir
 from .jam_mengajar import JamMengajar, JamMengajarInduk, JamMengajarNonInduk
@@ -23,3 +25,21 @@ class DataIndividu:
     tugas_tambahan: TugasTambahan
     jumlah_jam_mengajar: JamMengajar
     total_jjm_linier_tambahan: str
+
+    @classmethod
+    def from_fit_individu(cls, tag: Tag) -> DataIndividu:
+        # #fit_individu
+        pass
+
+
+__all__ = [
+    "IjazahTerakhir",
+    "JamMengajar",
+    "JamMengajarInduk",
+    "JamMengajarNonInduk",
+    "SekolahInduk",
+    "LokasiSekolahInduk",
+    "StatusKepegawaian",
+    "TugasTambahan",
+    "DataIndividu",
+]

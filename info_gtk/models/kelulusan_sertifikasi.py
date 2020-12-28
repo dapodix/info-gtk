@@ -1,3 +1,5 @@
+from __future__ import annotations
+from bs4 import Tag
 from dataclasses import dataclass
 
 
@@ -14,3 +16,8 @@ class KelulusanSertifikasi:
     nama_sekolah_terbit_nrg: str
     data_tercatat_jenjang: str
     kab_kota_saat_ini: str
+
+    @classmethod
+    def from_fit_kelulusan(cls, tag: Tag) -> KelulusanSertifikasi:
+        # #fit_Kelulusan
+        pass

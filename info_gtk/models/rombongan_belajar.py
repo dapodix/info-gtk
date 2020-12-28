@@ -1,4 +1,7 @@
+from __future__ import annotations
+from bs4 import Tag
 from dataclasses import dataclass
+from typing import List
 
 
 @dataclass
@@ -37,3 +40,8 @@ class RombonganBelajar:
     jenis_jam: str
     status: str
     keterangan: str
+
+    @classmethod
+    def from_fit_rombongan_belajar(cls, tag: Tag) -> List[RombonganBelajar]:
+        # #fit_RombonganBelajar
+        pass

@@ -1,3 +1,5 @@
+from __future__ import annotations
+from bs4 import Tag
 from dataclasses import dataclass
 
 
@@ -10,3 +12,8 @@ class Profile:
     email: str
     email_terverifikasi: bool
     alamat: str
+
+    @classmethod
+    def from_panel(cls, tag: Tag) -> Profile:
+        # /html/body/div[2]/div[2]/div[1]/div[1]/div
+        pass

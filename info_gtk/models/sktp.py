@@ -1,8 +1,10 @@
+from __future__ import annotations
+from bs4 import Tag
 from dataclasses import dataclass
 
 
 @dataclass
-class TunjanganProfesiGuru:
+class Sktp:
     nomor_sktp: str
     tanggal_penerbitan_sktp: str
     pembayaran_tpg_periode: str
@@ -14,3 +16,8 @@ class TunjanganProfesiGuru:
     kab_kota: str
     provinsi: str
     rekening_bank: str
+
+    @classmethod
+    def from_fit_sktp(cls, tag: Tag) -> Sktp:
+        # #fit_SKTP
+        pass

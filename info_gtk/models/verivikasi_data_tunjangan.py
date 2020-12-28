@@ -1,3 +1,5 @@
+from __future__ import annotations
+from bs4 import Tag
 from dataclasses import dataclass
 
 
@@ -17,3 +19,8 @@ class VerivikasiDataTunjangan:
     keterangan_kepegawaian: str
     usia: bool
     keterangan_usia: str
+
+    @classmethod
+    def from_fit_verivikasi(cls, tag: Tag) -> VerivikasiDataTunjangan:
+        # #fit_Verifikasi
+        pass

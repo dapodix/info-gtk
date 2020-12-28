@@ -1,4 +1,7 @@
+from __future__ import annotations
+from bs4 import Tag
 from dataclasses import dataclass
+from typing import List
 
 
 @dataclass
@@ -16,7 +19,12 @@ class BankPenyalur:
 
 
 @dataclass
-class PembayaranSktp:
+class RealisasiSktp:
     no: int
     periode: PeriodePembayaran
     bank_penyalur: BankPenyalur
+
+    @classmethod
+    def from_fit_realisasi_sktp(cls, tag: Tag) -> List[RealisasiSktp]:
+        # #fit_RealisasiBayarSKTP
+        pass
