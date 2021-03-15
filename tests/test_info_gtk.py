@@ -6,5 +6,7 @@ def test_version():
 
 
 def test_info_gtk(email: str, password: str):
+    if not email or not password:
+        return
     info_gtk = InfoGtk(email, password)
     assert info_gtk.is_login is True
