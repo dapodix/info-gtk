@@ -1,12 +1,11 @@
 #!/usr/bin/env python
 
-import attr
 import logging
 from requests import Session
 
 
 class InfoGtk:
-    BASE_URL: str = attr.ib(default="https://info.gtk.kemdikbud.go.id/")
+    BASE_URL: str = "https://info.gtk.kemdikbud.go.id/"
 
     def __init__(self, email: str, password: str):
         self._logger = logging.getLogger(self.__class__.__name__)
