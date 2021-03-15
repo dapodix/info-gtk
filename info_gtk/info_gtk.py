@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 
 import logging
+from bs4 import BeautifulSoup
 from requests import Session
+from typing import Optional
 
 
 class InfoGtk:
@@ -13,6 +15,7 @@ class InfoGtk:
         self._password = password
         self._session = Session()
         self._dashboard = ""
+        self._soup: Optional[BeautifulSoup] = None
         self._verify = False
         self.is_login = False
         if not self.is_login:
@@ -25,6 +28,13 @@ class InfoGtk:
         if not self._dashboard:
             self._dashboard = self.get_dashboard()
         return self._dashboard
+
+    @property
+    def soup(self) -> BeautifulSoup:
+        if self._soup:
+            return self._soup
+        self._soup = BeautifulSoup(self.dashboard, "html.parser")
+        return self._soup
 
     def login(self, email: str = None, password: str = None, retry=0) -> bool:
         email = email or self._email
