@@ -42,8 +42,14 @@ class InfoGtk:
             "metode": "Account",
             "s": "990",
         }
+        headers = {"Referer": res.url}
         self._logger.debug("Trying to login")
-        res = self._session.post(self.BASE_URL, data=data, allow_redirects=False)
+        res = self._session.post(
+            self.BASE_URL,
+            data=data,
+            allow_redirects=False,
+            headers=headers,
+        )
         if not res.status_code == 302:
             self._logger.debug("Login failed")
             if retry > 0:
