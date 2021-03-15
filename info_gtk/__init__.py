@@ -13,6 +13,7 @@ from .info_gtk import InfoGtk
 
 from .version import __version__  # NOQA
 
+__author__ = "hexatester <habibrohman@protonmail.com>"
 
 __all__ = [
     "DataIndividu",
