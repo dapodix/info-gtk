@@ -1,6 +1,10 @@
 # Info GTK CLI
 
+[![PyPi Package Version](https://img.shields.io/pypi/v/info-gtk)](https://pypi.org/project/info-gtk/)
+[![Supported Python versions](https://img.shields.io/pypi/pyversions/info-gtk)](https://pypi.org/project/info-gtk/)
+[![LICENSE](https://img.shields.io/github/license/hexatester/info-gtk)](https://github.com/dapodix/info-gtk/blob/master/LICENSE)
 [![Tests](https://github.com/dapodix/info-gtk/workflows/Tests/badge.svg)](https://github.com/dapodix/info-gtk/actions?query=workflow%3ATests)
+[![codecov](https://codecov.io/gh/dapodix/info-gtk/branch/master/graph/badge.svg)](https://codecov.io/gh/dapodix/info-gtk)
 
 CLI / SDK python [info-gtk](https://info.gtk.kemdikbud.go.id/).
 
