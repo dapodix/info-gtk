@@ -1,12 +1,11 @@
 beautifulsoup4==4.9.3
 bs4==0.0.1
-certifi==2020.12.5
-chardet==4.0.0
-click==7.1.2
-et-xmlfile==1.0.1
-idna==2.10
-jdcal==1.4.1
-openpyxl==3.0.5
-requests==2.25.1
-soupsieve==2.1; python_version >= "3.0"
-urllib3==1.26.2
+certifi==2020.12.5; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
+chardet==4.0.0; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
+click==7.1.2; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.5.0")
+et-xmlfile==1.0.1; python_version >= "3.6"
+idna==2.10; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
+openpyxl==3.0.7; python_version >= "3.6"
+requests==2.25.1; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.5.0")
+soupsieve==2.2; python_version >= "3.6"
+urllib3==1.26.3; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version < "4"
