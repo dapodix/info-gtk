@@ -3,7 +3,7 @@ name = "info-gtk"
 version = "0.1.0"
 description = "CLI / SDK python info-gtk"
 authors = ["hexatester <habibrohman@protonmail.com>"]
-keywords = "dapodik info-gtk kemdikbud"
+keywords = ["dapodik","info-gtk","kemdikbud"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Education",
