@@ -1,7 +1,19 @@
-from . import BaseInfoGtk
+#!/usr/bin/env python
+
+import attr
+import logging
+from requests import Session
 
 
-class AuthInfoGtk(BaseInfoGtk):
+class InfoGtk:
+    BASE_URL: str = attr.ib(default="https://info.gtk.kemdikbud.go.id/")
+
+    def __init__(self, email: str, password: str):
+        self._logger = logging.getLogger(self.__class__.__name__)
+        self._email = email
+        self._password = password
+        self._session = Session()
+
     def login(self, email: str = None, password: str = None, retry=0) -> bool:
         email = email or self._email
         password = password or self._password
