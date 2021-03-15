@@ -14,6 +14,9 @@ class InfoGtk:
         self._password = password
         self._session = Session()
         self._dashboard = ""
+        self.is_login = False
+        if not self.is_login:
+            self.is_login = self.login(email, password)
         if not self._dashboard:
             self._dashboard = self.get_dashboard()
 
@@ -26,6 +29,8 @@ class InfoGtk:
     def login(self, email: str = None, password: str = None, retry=0) -> bool:
         email = email or self._email
         password = password or self._password
+        if self.is_login:
+            self.logout()
         self._logger.debug("Getting login page")
         res = self._session.get(self.BASE_URL + "/?s=999&pesan=")
         if not res.ok:
