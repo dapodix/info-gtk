@@ -1,4 +1,3 @@
-from __future__ import annotations
 from bs4 import Tag
 from dataclasses import dataclass
 
@@ -18,6 +17,6 @@ class Sktp:
     rekening_bank: str
 
     @classmethod
-    def from_fit_sktp(cls, tag: Tag) -> Sktp:
+    def from_fit_sktp(cls, tag: Tag) -> "Sktp":
         # #fit_SKTP
         pass

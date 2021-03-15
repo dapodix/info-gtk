@@ -1,4 +1,3 @@
-from __future__ import annotations
 from bs4 import Tag
 from dataclasses import dataclass
 from typing import List
@@ -25,6 +24,6 @@ class RealisasiSktp:
     bank_penyalur: BankPenyalur
 
     @classmethod
-    def from_fit_realisasi_sktp(cls, tag: Tag) -> List[RealisasiSktp]:
+    def from_fit_realisasi_sktp(cls, tag: Tag) -> List["RealisasiSktp"]:
         # #fit_RealisasiBayarSKTP
         pass
