@@ -13,6 +13,15 @@ class InfoGtk:
         self._email = email
         self._password = password
         self._session = Session()
+        self._dashboard = ""
+        if not self._dashboard:
+            self._dashboard = self.get_dashboard()
+
+    @property
+    def dashboard(self) -> str:
+        if not self._dashboard:
+            self._dashboard = self.get_dashboard()
+        return self._dashboard
 
     def login(self, email: str = None, password: str = None, retry=0) -> bool:
         email = email or self._email
@@ -42,6 +51,15 @@ class InfoGtk:
             return False
         self._logger.debug("Login success")
         return res.status_code == 302
+
+    def get_dashboard(self) -> str:
+        if self._dashboard:
+            return self._dashboard
+        res = self._session.get(self.BASE_URL + "dashboard")
+        if res.status_code != 404 or not res.text:
+            return ""
+        self._dashboard = res.text
+        return ""
 
     def logout(self) -> bool:
         res = self._session.get(self.BASE_URL + "auth/logout")
