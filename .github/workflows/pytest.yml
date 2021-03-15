@@ -16,6 +16,9 @@ jobs:
           pip install poetry
           poetry install
       - name: Run tests
+        env:
+          EMAIL: ${{ secrets.INFO_GTK_EMAIL }}
+          PASSWORD: ${{ secrets.INFO_GTK_PASSWORD }}
         run: |
           poetry run pytest --cov=./ --cov-report=xml
       - name: Upload coverage
