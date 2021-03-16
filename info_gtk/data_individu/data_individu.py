@@ -1,6 +1,6 @@
 from __future__ import annotations
+import attr
 from bs4 import Tag
-from dataclasses import dataclass
 
 from . import IjazahTerakhir
 from . import JamMengajar
@@ -9,7 +9,7 @@ from . import StatusKepegawaian
 from . import TugasTambahan
 
 
-@dataclass
+@attr.dataclass(slots=True)
 class DataIndividu:
     update_terakhir: str
     nuptk: str

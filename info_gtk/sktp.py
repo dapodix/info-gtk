@@ -1,8 +1,8 @@
+import attr
 from bs4 import Tag
-from dataclasses import dataclass
 
 
-@dataclass
+@attr.dataclass(slots=True)
 class Sktp:
     nomor_sktp: str
     tanggal_penerbitan_sktp: str

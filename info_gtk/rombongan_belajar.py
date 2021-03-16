@@ -1,9 +1,9 @@
+import attr
 from bs4 import Tag
-from dataclasses import dataclass
 from typing import List
 
 
-@dataclass
+@attr.dataclass(slots=True)
 class StatusRombonganBelajar:
     nama: str
     tingkat: str
@@ -11,14 +11,14 @@ class StatusRombonganBelajar:
     kurikulum: str
 
 
-@dataclass
+@attr.dataclass(slots=True)
 class MataPelajaranDiampu:
     kode: int
     nama: str
     linier: int
 
 
-@dataclass
+@attr.dataclass(slots=True)
 class JumlahJamMengajar:
     kurikulum: int
     dapodik: int
@@ -26,7 +26,7 @@ class JumlahJamMengajar:
     linier: int
 
 
-@dataclass
+@attr.dataclass(slots=True)
 class RombonganBelajar:
     no: int
     nama_sekolah: str

@@ -1,8 +1,8 @@
+import attr
 from bs4 import Tag
-from dataclasses import dataclass
 
 
-@dataclass
+@attr.dataclass(slots=True)
 class VerivikasiDataTunjangan:
     nuptk: bool
     keterangan_nuptk: str

@@ -1,15 +1,15 @@
+import attr
 from bs4 import Tag
-from dataclasses import dataclass
 from typing import List
 
 
-@dataclass
+@attr.dataclass(slots=True)
 class PeriodePembayaran:
     tw: int
     bulan: str
 
 
-@dataclass
+@attr.dataclass(slots=True)
 class BankPenyalur:
     nomor_rekening: str
     nama_pemegang_rekening: str
@@ -17,7 +17,7 @@ class BankPenyalur:
     cabang_bank: str
 
 
-@dataclass
+@attr.dataclass(slots=True)
 class RealisasiSktp:
     no: int
     periode: PeriodePembayaran

@@ -1,7 +1,7 @@
-from dataclasses import dataclass
+import attr
 
 
-@dataclass
+@attr.dataclass(slots=True)
 class IjazahTerakhir:
     nama: str
     jurusan: str

@@ -1,20 +1,20 @@
-from dataclasses import dataclass
+import attr
 from typing import Optional
 
 
-@dataclass
+@attr.dataclass(slots=True)
 class JamMengajarInduk:
     jam_mengajar: int
     jam_linier: int
 
 
-@dataclass
+@attr.dataclass(slots=True)
 class JamMengajarNonInduk:
     jam_mengajar: Optional[int]
     jam_linier: Optional[int]
 
 
-@dataclass
+@attr.dataclass(slots=True)
 class JamMengajar:
     sekolah_induk: JamMengajarInduk
     sekolah_non_induk: JamMengajarNonInduk

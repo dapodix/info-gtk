@@ -1,7 +1,7 @@
-from dataclasses import dataclass
+import attr
 
 
-@dataclass
+@attr.dataclass(slots=True)
 class SekolahInduk:
     nama: str
     validasi: str
@@ -9,7 +9,7 @@ class SekolahInduk:
     keterangan_validasi: str
 
 
-@dataclass
+@attr.dataclass(slots=True)
 class LokasiSekolahInduk:
     provinsi: str
     kab_kota: str
