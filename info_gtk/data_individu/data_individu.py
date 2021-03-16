@@ -1,4 +1,3 @@
-from __future__ import annotations
 import attr
 from bs4 import Tag
 
@@ -28,6 +27,6 @@ class DataIndividu:
     total_jjm_linier_tambahan: str
 
     @classmethod
-    def from_fit_individu(cls, tag: Tag) -> DataIndividu:
+    def from_fit_individu(cls, tag: Tag) -> "DataIndividu":
         # #fit_individu
         pass
