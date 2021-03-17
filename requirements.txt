@@ -6,6 +6,7 @@ chardet==4.0.0; python_version >= "2.7" and python_full_version < "3.0.0" or pyt
 click==7.1.2; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.5.0")
 et-xmlfile==1.0.1; python_version >= "3.6"
 idna==2.10; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
+json5==0.9.5
 openpyxl==3.0.7; python_version >= "3.6"
 requests==2.25.1; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.5.0")
 soupsieve==2.2; python_version >= "3.6"
