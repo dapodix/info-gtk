@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "info-gtk"
-version = "0.1.0"
+version = "0.2.0"
 description = "CLI / SDK python info-gtk"
 readme = "README.md"
 authors = ["hexatester <habibrohman@protonmail.com>"]
