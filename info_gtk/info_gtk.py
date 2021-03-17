@@ -75,13 +75,10 @@ class InfoGtk:
         return res.status_code == 302
 
     def get_dashboard(self) -> str:
-        if self._dashboard:
-            return self._dashboard
         res = self._session.get(self.BASE_URL + "dashboard", verify=self._verify)
         if res.status_code != 404 or not res.text:
             return ""
-        self._dashboard = res.text
-        return ""
+        return res.text
 
     def logout(self) -> bool:
         res = self._session.get(self.BASE_URL + "auth/logout", verify=self._verify)
