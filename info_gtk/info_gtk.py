@@ -4,7 +4,7 @@ import attr
 import logging
 from bs4 import BeautifulSoup
 from requests import Session
-from typing import List, Optional
+from typing import Optional
 
 from . import DataIndividu
 from .table_data import TableData
@@ -41,7 +41,7 @@ class InfoGtk:
 
     @property
     def dashboard(self) -> str:
-        if not self._dashboard:
+        while not self._dashboard:
             self._dashboard = self.get_dashboard()
         return self._dashboard
 
@@ -56,11 +56,7 @@ class InfoGtk:
     def data_individu(self) -> DataIndividu:
         if self._data_individu:
             return self._data_individu
-        table_data: List[TableData] = list()
-        while not table_data:
-            table_data = TableData.make_individu(self.dashboard)
-            if not table_data:
-                self._dashboard = None
+        table_data = TableData.make_individu(self.dashboard)
         self._data_individu = DataIndividu.from_table_datas(table_data)
         return self._data_individu
 
