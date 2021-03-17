@@ -1,9 +1,20 @@
 #!/usr/bin/env python
 
+import attr
 import logging
 from bs4 import BeautifulSoup
 from requests import Session
 from typing import Optional
+
+
+@attr.dataclass(slots=True)
+class LoginData:
+    userid: str
+    password: str
+    submit: str = "Login"
+    mod: str = "cek_guru"
+    metode: str = "Account"
+    s: str = "990"
 
 
 class InfoGtk:
@@ -49,19 +60,15 @@ class InfoGtk:
                 return self.login(email, password, retry)
             return False
         # Capthca
-        data = {
-            "userid": self._email,
-            "password": self._password,
-            "submit": "Login",
-            "mod": "cek_guru",
-            "metode": "Account",
-            "s": "990",
-        }
+        data = LoginData(
+            userid=self._email,
+            password=self._password,
+        )
         headers = {"Referer": res.url}
         self._logger.debug("Trying to login")
         res = self._session.post(
             self.BASE_URL,
-            data=data,
+            data=attr.asdict(data),
             allow_redirects=False,
             headers=headers,
             verify=self._verify,
