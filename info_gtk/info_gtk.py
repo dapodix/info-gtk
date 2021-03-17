@@ -7,6 +7,7 @@ from requests import Session
 from typing import Optional
 
 from . import DataIndividu
+from . import StatusNuptk
 from .table_data import TableData
 
 
@@ -32,6 +33,7 @@ class InfoGtk:
         self._dashboard = ""
         self._soup: Optional[BeautifulSoup] = None
         self._data_individu: Optional[DataIndividu] = None
+        self._status_nuptk: Optional[StatusNuptk] = None
         self._verify = False
         self.is_login = False
         if not self.is_login:
@@ -41,8 +43,9 @@ class InfoGtk:
 
     @property
     def dashboard(self) -> str:
-        while not self._dashboard:
-            self._dashboard = self.get_dashboard()
+        if not self._dashboard:
+            while not self._dashboard:
+                self._dashboard = self.get_dashboard()
         return self._dashboard
 
     @property
@@ -59,6 +62,14 @@ class InfoGtk:
         table_data = TableData.make_individu(self.dashboard)
         self._data_individu = DataIndividu.from_table_datas(table_data)
         return self._data_individu
+
+    @property
+    def status_nuptk(self) -> StatusNuptk:
+        if self._status_nuptk:
+            return self._status_nuptk
+        table_data = TableData.make_status_nuptk(self.dashboard)
+        self._status_nuptk = StatusNuptk.from_table_data(table_data)
+        return self._status_nuptk
 
     def login(self, email: str = None, password: str = None, retry=0) -> bool:
         email = email or self.email
