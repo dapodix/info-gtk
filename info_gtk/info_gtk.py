@@ -6,6 +6,9 @@ from bs4 import BeautifulSoup
 from requests import Session
 from typing import Optional
 
+from . import DataIndividu
+from .table_data import TableData
+
 
 @attr.dataclass(slots=True)
 class LoginData:
@@ -27,6 +30,7 @@ class InfoGtk:
         self._session = Session()
         self._dashboard = ""
         self._soup: Optional[BeautifulSoup] = None
+        self._data_individu: Optional[DataIndividu] = None
         self._verify = False
         self.is_login = False
         if not self.is_login:
@@ -46,6 +50,14 @@ class InfoGtk:
             return self._soup
         self._soup = BeautifulSoup(self.dashboard, "html.parser")
         return self._soup
+
+    @property
+    def data_individu(self) -> DataIndividu:
+        if self._data_individu:
+            return self._data_individu
+        table_data = TableData.make_individu(self.dashboard)
+        self._data_individu = DataIndividu.from_table_datas(table_data)
+        return self._data_individu
 
     def login(self, email: str = None, password: str = None, retry=0) -> bool:
         email = email or self._email
