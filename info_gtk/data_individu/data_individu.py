@@ -1,6 +1,7 @@
 import attr
-from bs4 import Tag
+from typing import List
 
+from info_gtk.table_data import TableData
 from . import IjazahTerakhir
 from . import JamMengajar
 from . import SekolahInduk, LokasiSekolahInduk
@@ -14,7 +15,7 @@ class DataIndividu:
     nuptk: str
     nama: str
     tanggal_lahir: str
-    nik: int
+    nik: str
     email: str
     tanggal_pensiun: str
     jenis_ptk: str
@@ -27,6 +28,22 @@ class DataIndividu:
     total_jjm_linier_tambahan: str
 
     @classmethod
-    def from_fit_individu(cls, tag: Tag) -> "DataIndividu":
+    def from_table_datas(cls, table_data: List[TableData]) -> "DataIndividu":
         # #fit_individu
-        pass
+        return cls(
+            update_terakhir=table_data[0].data,
+            nuptk=table_data[1].data,
+            nama=table_data[2].data,
+            tanggal_lahir=table_data[3].data,
+            nik=table_data[4].data,
+            email=table_data[5].data,
+            tanggal_pensiun=table_data[6].data,
+            jenis_ptk=table_data[7].data,
+            status_kepegawaian=StatusKepegawaian.from_table_data(table_data[8]),
+            ijazah_terakhir=IjazahTerakhir.from_table_data(table_data[9]),
+            sekolah_induk=SekolahInduk.from_table_data(table_data[10]),
+            lokasi_sekolah_induk=LokasiSekolahInduk.from_table_data(table_data[11]),
+            tugas_tambahan=TugasTambahan.from_table_data(table_data[12]),
+            jumlah_jam_mengajar=JamMengajar.from_table_data(table_data[13]),
+            total_jjm_linier_tambahan=table_data[14].data,
+        )
