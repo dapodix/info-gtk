@@ -59,6 +59,8 @@ class InfoGtk:
         table_data: List[TableData] = list()
         while not table_data:
             table_data = TableData.make_individu(self.dashboard)
+            if not table_data:
+                self._dashboard = None
         self._data_individu = DataIndividu.from_table_datas(table_data)
         return self._data_individu
 
