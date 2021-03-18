@@ -54,7 +54,13 @@ class InfoGtk:
     def data_individu(self) -> DataIndividu:
         if self._data_individu:
             return self._data_individu
-        table_data = TableData.make_individu(self.dashboard)
+        table_data = TableData.makes(
+            data=self.dashboard,
+            locate="/*individu*/",
+            offset=1,
+            lstrip="try {var tabledata = ",
+            rstrip=';putTable("#fit_individu",tabledata);} catch(err) {  };',
+        )
         self._data_individu = DataIndividu.from_table_data(table_data)
         return self._data_individu
 

@@ -29,23 +29,6 @@ class TableData:
         return results
 
     @classmethod
-    def make_individu(cls, data: str) -> List["TableData"]:
-        tabledata: str = ""
-        datas = data.splitlines()
-        for i, line in enumerate(datas):
-            if "/*individu*/" in line:
-                tabledata = datas[i + 1]
-                tabledata = tabledata.strip()
-                tabledata = tabledata.lstrip("try {var tabledata = ")
-                tabledata = tabledata.rstrip(
-                    ';putTable("#fit_individu",tabledata);} catch(err) {  };'
-                )
-                break
-        if not tabledata:
-            return list()
-        return cls.from_json5_list(tabledata)
-
-    @classmethod
     def make_status_nuptk(cls, data: str) -> List["TableData"]:
         tabledata: str = ""
         datas = data.splitlines()
