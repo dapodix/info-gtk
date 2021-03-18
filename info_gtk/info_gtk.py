@@ -82,7 +82,13 @@ class InfoGtk:
     def kelulusan_sertifikasi(self) -> KelulusanSertifikasi:
         if self._kelulusan_sertifikasi:
             return self._kelulusan_sertifikasi
-        table_data = TableData.make_kelulusan_sertifikasi(self.dashboard)
+        table_data = TableData.makes(
+            data=self.dashboard,
+            locate="/*arsip kelulusan*/",
+            offset=1,
+            lstrip="try {var tabledata = ",
+            rstrip=';putTable("#fit_Kelulusan",tabledata);} catch(err) {  };',
+        )
         self._kelulusan_sertifikasi = KelulusanSertifikasi.from_table_data(table_data)
         return self._kelulusan_sertifikasi
 

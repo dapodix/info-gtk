@@ -29,23 +29,6 @@ class TableData:
         return results
 
     @classmethod
-    def make_kelulusan_sertifikasi(cls, data: str) -> List["TableData"]:
-        tabledata: str = ""
-        datas = data.splitlines()
-        for i, line in enumerate(datas):
-            if "/*arsip kelulusan*/" in line:
-                tabledata = datas[i + 1]
-                tabledata = tabledata.strip()
-                tabledata = tabledata.lstrip("try {var tabledata = ")
-                tabledata = tabledata.rstrip(
-                    ';putTable("#fit_Kelulusan",tabledata);} catch(err) {  };'
-                )
-                break
-        if not tabledata:
-            return list()
-        return cls.from_json5_list(tabledata)
-
-    @classmethod
     def makes(
         cls,
         data: str,
