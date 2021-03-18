@@ -78,3 +78,25 @@ class TableData:
         if not tabledata:
             return list()
         return cls.from_json5_list(tabledata)
+
+    @classmethod
+    def makes(
+        cls,
+        data: str,
+        locate: str,
+        offset: int = 1,
+        lstrip: str = "",
+        rstrip: str = "",
+    ):
+        tabledata: str = ""
+        datas = data.splitlines()
+        for i, line in enumerate(datas):
+            if locate in line:
+                tabledata = datas[i + offset]
+                tabledata = tabledata.strip()
+                tabledata = tabledata.lstrip(lstrip)
+                tabledata = tabledata.rstrip(rstrip)
+                break
+        if not tabledata:
+            return list()
+        return cls.from_json5_list(tabledata)
