@@ -37,7 +37,7 @@ class InfoGtk:
         self._verify = False
         self.is_login = False
         if not self.is_login:
-            self.is_login = self.login()
+            self.login()
         if not self._dashboard:
             self._dashboard = self.get_dashboard()
 
@@ -100,7 +100,8 @@ class InfoGtk:
                 return self.login(email, password, retry)
             return False
         self._logger.debug("Login success")
-        return res.status_code == 302
+        self.is_login = res.status_code == 302
+        return self.is_login
 
     def get_dashboard(self) -> str:
         res = self._session.get(self.base_url + "dashboard", verify=self._verify)
