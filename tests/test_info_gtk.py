@@ -2,7 +2,7 @@ from info_gtk import __version__, InfoGtk
 
 
 def test_version():
-    assert __version__ == "0.3.0"
+    assert __version__ == "0.4.0"
 
 
 def test_info_gtk(email: str, password: str):
