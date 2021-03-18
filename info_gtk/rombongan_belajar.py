@@ -1,46 +1,35 @@
 import attr
-from bs4 import Tag
-from typing import List
-
-
-@attr.dataclass(slots=True)
-class StatusRombonganBelajar:
-    nama: str
-    tingkat: str
-    paralel: int
-    kurikulum: str
-
-
-@attr.dataclass(slots=True)
-class MataPelajaranDiampu:
-    kode: int
-    nama: str
-    linier: int
-
-
-@attr.dataclass(slots=True)
-class JumlahJamMengajar:
-    kurikulum: int
-    dapodik: int
-    diakui: int
-    linier: int
+from typing import Any, List, Dict
 
 
 @attr.dataclass(slots=True)
 class RombonganBelajar:
-    no: int
+    no: str
+    r_id: str
     nama_sekolah: str
-    status_rombongan_belajar: StatusRombonganBelajar
-    semester: str
-    mata_pelajaran_diampu: MataPelajaranDiampu
-    jjm: JumlahJamMengajar
-    jjm_rombel: int
-    jumlah_siswa: int
-    jenis_jam: str
-    status: str
-    keterangan: str
+    nama_rombel: str
+    thn_ajaran: str
+    smt: str
+    nama_kurikulum_dapodik: str
+    jjm: str
+    jjm_ktsp: str
+    jjm_linier: str
+    jjm_normal: str
+    diakui: str
+    jjm_rombel: str
+    jml_siswa: str
+    j_jam: str
+    kode: str
+    mapel: str
+    is_linier: str
+    paralel: str
+    tingkat: str
+    ket: str
+    dRombel: List[Any] = attr.ib(factory=list)
 
     @classmethod
-    def from_fit_rombongan_belajar(cls, tag: Tag) -> List["RombonganBelajar"]:
-        # #fit_RombonganBelajar
-        pass
+    def from_list(cls, datas: List[Dict[str, Any]]) -> List["RombonganBelajar"]:
+        results: List["RombonganBelajar"] = list()
+        for data in datas:
+            results.append(cls(**data))
+        return results
