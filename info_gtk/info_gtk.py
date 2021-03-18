@@ -43,9 +43,10 @@ class InfoGtk:
 
     @property
     def dashboard(self) -> str:
-        if not self._dashboard:
-            while not self._dashboard:
-                self._dashboard = self.get_dashboard()
+        if self._dashboard:
+            return self._dashboard
+        while not self._dashboard:
+            self._dashboard = self.get_dashboard()
         return self._dashboard
 
     @property
