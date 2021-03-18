@@ -68,7 +68,13 @@ class InfoGtk:
     def status_nuptk(self) -> StatusNuptk:
         if self._status_nuptk:
             return self._status_nuptk
-        table_data = TableData.make_status_nuptk(self.dashboard)
+        table_data = TableData.makes(
+            data=self.dashboard,
+            locate="/*arsip NUPTK*/",
+            offset=1,
+            lstrip="try { var tabledata = ",
+            rstrip=';putTable("#fit_ArsipNuptk",tabledata);} catch(err) {  };',
+        )
         self._status_nuptk = StatusNuptk.from_table_data(table_data)
         return self._status_nuptk
 
