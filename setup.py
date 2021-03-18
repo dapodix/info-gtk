@@ -20,7 +20,15 @@ setup(
     description="Exporter-scraper info-gtk",
     packages=packages,
     package_data={"info_gtk": ["template/*.xlsx"]},
-    install_requires=["python", "requests", "bs4", "openpyxl", "click"],
+    install_requires=[
+        "python",
+        "requests",
+        "json5",
+        "attrs",
+        "bs4",
+        "openpyxl",
+        "click",
+    ],
     include_package_data=True,
     classifiers=[
         "Development Status :: 4 - Beta",
