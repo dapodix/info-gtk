@@ -26,6 +26,7 @@ class InfoGtk:
     email: str
     password: str
     dashboard: str = ""
+    is_login: bool = False
     base_url: str = "https://info.gtk.kemdikbud.go.id/"
 
     def __attrs_post_init__(self):
@@ -35,7 +36,6 @@ class InfoGtk:
         self._data_individu: Optional[DataIndividu] = None
         self._status_nuptk: Optional[StatusNuptk] = None
         self._verify = False
-        self.is_login = False
         if not self.is_login:
             self.login()
         if not self.dashboard:
