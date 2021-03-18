@@ -28,7 +28,7 @@ class DataIndividu:
     total_jjm_linier_tambahan: str
 
     @classmethod
-    def from_table_datas(cls, table_data: List[TableData]) -> "DataIndividu":
+    def from_table_data(cls, table_data: List[TableData]) -> "DataIndividu":
         # #fit_individu
         return cls(
             update_terakhir=table_data[0].data,

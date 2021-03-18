@@ -53,7 +53,7 @@ class InfoGtk:
         if self._data_individu:
             return self._data_individu
         table_data = TableData.make_individu(self.dashboard)
-        self._data_individu = DataIndividu.from_table_datas(table_data)
+        self._data_individu = DataIndividu.from_table_data(table_data)
         return self._data_individu
 
     @property
