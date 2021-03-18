@@ -2,13 +2,15 @@
 
 import attr
 import logging
+import json
 from bs4 import BeautifulSoup
 from requests import Session
-from typing import Optional
+from typing import List, Optional
 
 from . import DataIndividu
 from . import StatusNuptk
 from . import KelulusanSertifikasi
+from . import RombonganBelajar
 from .table_data import TableData
 
 
@@ -37,6 +39,7 @@ class InfoGtk:
         self._data_individu: Optional[DataIndividu] = None
         self._status_nuptk: Optional[StatusNuptk] = None
         self._kelulusan_sertifikasi: Optional[KelulusanSertifikasi] = None
+        self._rombongan_belajar: List[RombonganBelajar] = list()
         self._verify = False
         if not self.is_login and not self.dashboard:
             self.login()
@@ -91,6 +94,23 @@ class InfoGtk:
         )
         self._kelulusan_sertifikasi = KelulusanSertifikasi.from_table_data(table_data)
         return self._kelulusan_sertifikasi
+
+    @property
+    def rombongan_belajar(self) -> List[RombonganBelajar]:
+        if self._rombongan_belajar:
+            return self._rombongan_belajar
+        rombel_text = TableData.clean(
+            data=self.dashboard,
+            locate="/*Rombongan Belajar*/",
+            offset=1,
+            lstrip="try {var tabledata = ",
+            rstrip=";putTabelRombonganBelajar(tabledata);} catch(err) {  };",
+        )
+        if rombel_text.endswith(",]"):
+            rombel_text = rombel_text.rstrip(",]") + "]"
+        rombel_data = json.loads(rombel_text)
+        self._rombongan_belajar = RombonganBelajar.from_list(rombel_data)
+        return self._rombongan_belajar
 
     def login(self, email: str = None, password: str = None, retry=0) -> bool:
         email = email or self.email
