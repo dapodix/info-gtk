@@ -25,12 +25,12 @@ class LoginData:
 class InfoGtk:
     email: str
     password: str
+    dashboard: str = ""
     base_url: str = "https://info.gtk.kemdikbud.go.id/"
 
     def __attrs_post_init__(self):
         self._logger = logging.getLogger(self.__class__.__name__)
         self._session = Session()
-        self._dashboard = ""
         self._soup: Optional[BeautifulSoup] = None
         self._data_individu: Optional[DataIndividu] = None
         self._status_nuptk: Optional[StatusNuptk] = None
@@ -38,16 +38,8 @@ class InfoGtk:
         self.is_login = False
         if not self.is_login:
             self.login()
-        if not self._dashboard:
-            self._dashboard = self.get_dashboard()
-
-    @property
-    def dashboard(self) -> str:
-        if self._dashboard:
-            return self._dashboard
-        while not self._dashboard:
-            self._dashboard = self.get_dashboard()
-        return self._dashboard
+        if not self.dashboard:
+            self.dashboard = self.get_dashboard()
 
     @property
     def soup(self) -> BeautifulSoup:
