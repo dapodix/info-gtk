@@ -8,6 +8,7 @@ from typing import Optional
 
 from . import DataIndividu
 from . import StatusNuptk
+from . import KelulusanSertifikasi
 from .table_data import TableData
 
 
@@ -35,6 +36,7 @@ class InfoGtk:
         self._soup: Optional[BeautifulSoup] = None
         self._data_individu: Optional[DataIndividu] = None
         self._status_nuptk: Optional[StatusNuptk] = None
+        self._kelulusan_sertifikasi: Optional[KelulusanSertifikasi] = None
         self._verify = False
         if not self.is_login and not self.dashboard:
             self.login()
@@ -63,6 +65,14 @@ class InfoGtk:
         table_data = TableData.make_status_nuptk(self.dashboard)
         self._status_nuptk = StatusNuptk.from_table_data(table_data)
         return self._status_nuptk
+
+    @property
+    def kelulusan_sertifikasi(self) -> KelulusanSertifikasi:
+        if self._kelulusan_sertifikasi:
+            return self._kelulusan_sertifikasi
+        table_data = TableData.make_kelulusan_sertifikasi(self.dashboard)
+        self._kelulusan_sertifikasi = KelulusanSertifikasi.from_table_data(table_data)
+        return self._kelulusan_sertifikasi
 
     def login(self, email: str = None, password: str = None, retry=0) -> bool:
         email = email or self.email
