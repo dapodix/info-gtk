@@ -37,6 +37,19 @@ class TableData:
         lstrip: str = "",
         rstrip: str = "",
     ):
+        tabledata = cls.clean(data, locate, offset, lstrip, rstrip)
+        if not tabledata:
+            return list()
+        return cls.from_json5_list(tabledata)
+
+    @staticmethod
+    def clean(
+        data: str,
+        locate: str,
+        offset: int = 1,
+        lstrip: str = "",
+        rstrip: str = "",
+    ) -> str:
         tabledata: str = ""
         datas = data.splitlines()
         for i, line in enumerate(datas):
@@ -46,6 +59,4 @@ class TableData:
                 tabledata = tabledata.lstrip(lstrip)
                 tabledata = tabledata.rstrip(rstrip)
                 break
-        if not tabledata:
-            return list()
-        return cls.from_json5_list(tabledata)
+        return tabledata
