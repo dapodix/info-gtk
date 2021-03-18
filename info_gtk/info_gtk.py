@@ -36,7 +36,7 @@ class InfoGtk:
         self._data_individu: Optional[DataIndividu] = None
         self._status_nuptk: Optional[StatusNuptk] = None
         self._verify = False
-        if not self.is_login:
+        if not self.is_login and not self.dashboard:
             self.login()
         if not self.dashboard:
             self.dashboard = self.get_dashboard()
